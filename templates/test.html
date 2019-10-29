@@ -1,0 +1,18 @@
+{% load rest_framework %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in serializer %}
+    <a href="/api/test/{{ i.pk }}">{{ i.name }}</a><br>
+{% endfor %}
+<form method="post" action="/api/test/">
+    {% csrf_token %}
+    {% render_form form %}
+    <button type="submit">Send</button>
+</form>
+</body>
+</html>
